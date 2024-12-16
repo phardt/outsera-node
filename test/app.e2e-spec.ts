@@ -24,9 +24,29 @@ describe('AppController (e2e)', () => {
   });
 
   describe('Movie Endpoint', () => {
+    const result = {
+      min: [
+        {
+          producer: 'Bo Derek',
+          followingWin: 1990,
+          previousWin: 1984,
+          interval: 6,
+        },
+      ],
+      max: [
+        {
+          producer: 'Bo Derek',
+          followingWin: 1990,
+          previousWin: 1984,
+          interval: 6,
+        },
+      ],
+    };
+
     it('/ (GET)', async () => {
-      const movies = await request(await app.getHttpServer()).get('/movies');
-      console.log(movies.body);
+      const requestResponse = await request(await app.getHttpServer()).get('/movies');
+      console.log(requestResponse.body);
+      expect(requestResponse.body).toEqual(result);
     });
   });
 

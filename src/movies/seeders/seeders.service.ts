@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, OnApplicationBootstrap } from '@nestjs/common';
 import { parse } from 'fast-csv';
 import { createReadStream } from 'fs';
 import { join } from 'path';
@@ -8,8 +8,12 @@ import { Movie } from '../models/movie.schema';
 import { InjectModel } from '@nestjs/mongoose';
 
 @Injectable()
-export class SeedersService {
+export class SeedersService implements OnApplicationBootstrap {
   constructor(@InjectModel(Movie.name) private movieModel: Model<Movie>) {}
+  async onApplicationBootstrap() {
+    const movies = await this.movieModel.find();
+    if (movies.length <= 0) this.readMovies();
+  }
 
   async saveMovies(movies: MovieDto[]): Promise<void> {
     movies.forEach(async (movie) => {
