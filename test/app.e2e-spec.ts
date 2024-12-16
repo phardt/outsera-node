@@ -44,7 +44,9 @@ describe('AppController (e2e)', () => {
     };
 
     it('/ (GET)', async () => {
-      const requestResponse = await request(await app.getHttpServer()).get('/movies');
+      const requestResponse = await request(await app.getHttpServer()).get(
+        '/movies',
+      );
       console.log(requestResponse.body);
       expect(requestResponse.body).toEqual(result);
     });
