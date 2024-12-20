@@ -27,18 +27,18 @@ describe('AppController (e2e)', () => {
     const result = {
       min: [
         {
-          producer: 'Bo Derek',
-          followingWin: 1990,
-          previousWin: 1984,
-          interval: 6,
+          producer: 'Joel Silver',
+          followingWin: 1991,
+          previousWin: 1990,
+          interval: 1,
         },
       ],
       max: [
         {
-          producer: 'Bo Derek',
-          followingWin: 1990,
-          previousWin: 1984,
-          interval: 6,
+          producer: 'Matthew Vaughn',
+          followingWin: 2015,
+          previousWin: 2002,
+          interval: 13,
         },
       ],
     };
